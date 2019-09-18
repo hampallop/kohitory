@@ -1,17 +1,17 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "kohitory",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Kohitory coffee drip visualization",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Pallop Chaoputhipuchong <pallop.chao@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.15.16",
+    "gatsby": "^2.15.17",
     "gatsby-image": "^2.2.19",
     "gatsby-plugin-manifest": "^2.2.16",
     "gatsby-plugin-offline": "^3.0.7",
     "gatsby-plugin-react-helmet": "^3.1.7",
-    "gatsby-plugin-sharp": "^2.2.22",
-    "gatsby-source-filesystem": "^2.1.22",
+    "gatsby-plugin-sharp": "^2.2.23",
+    "gatsby-source-filesystem": "^2.1.23",
     "gatsby-transformer-sharp": "^2.2.14",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -19,6 +19,13 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-hamcompe": "1.1.5",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
     "prettier": "^1.18.2"
   },
   "keywords": [
@@ -27,7 +34,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -35,9 +42,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hamcompe/kohitory"
   }
 }
