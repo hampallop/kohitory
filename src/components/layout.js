@@ -37,7 +37,11 @@ const Layout = ({children}) => {
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Inspired by{' '}
-          <a href="https://www.youtube.com/watch?v=wmCW8xSWGZY">
+          <a
+            href="https://www.youtube.com/watch?v=wmCW8xSWGZY"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Tetsu Kasuya – 4:6 method
           </a>
         </footer>
