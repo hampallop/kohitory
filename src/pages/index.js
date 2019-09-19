@@ -18,6 +18,7 @@ const LogoSection = () => (
 const Label = styled.label`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   width: 100%;
   cursor: pointer;
@@ -25,23 +26,25 @@ const Label = styled.label`
   border: 3px solid #111;
   padding: 0.75rem;
 
+  border-left-width: 0;
   &:first-of-type {
-    border-right: none;
+    border-left-width: 3px;
   }
 `
 
 const MoodTitle = styled.span`
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
 `
 const MoodDescription = styled.span``
 const MoodSelectionWrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   justify-items: center;
-  align-items: center;
-  max-width: 24rem;
+  align-items: stretch;
+  align-content: center;
+  max-width: 40rem;
   margin: 0 auto;
 
   input[type='radio'] {
@@ -56,33 +59,30 @@ const MoodSelectionWrapper = styled.section`
   margin-bottom: 4.5rem;
 `
 
-const MoodSelectionSection = ({selected, onSelect}) => (
-  <MoodSelectionWrapper>
-    <input
-      type="radio"
-      id="mood-small"
-      name="mood"
-      value="150"
-      checked={selected === '150'}
-      onChange={e => onSelect(e.target.value)}
-    />
-    <Label htmlFor="mood-small">
-      <MoodTitle>Small</MoodTitle>
-      <MoodDescription>150ml</MoodDescription>
-    </Label>
-    <input
-      type="radio"
-      id="mood-big"
-      name="mood"
-      value="300"
-      checked={selected === '300'}
-      onChange={e => onSelect(e.target.value)}
-    />
-    <Label htmlFor="mood-big">
-      <MoodTitle>Big</MoodTitle>
-      <MoodDescription>300ml</MoodDescription>
-    </Label>
-  </MoodSelectionWrapper>
+const MoodSelectionSection = ({possibleMoods, selected, onSelect}) => (
+  <>
+    <h2 style={{textAlign: 'center', marginTop: 60}}>
+      What’s your mood today?
+    </h2>
+    <MoodSelectionWrapper>
+      {possibleMoods.map(mood => (
+        <>
+          <input
+            type="radio"
+            id={`mood-${mood.value}`}
+            name="mood"
+            value={mood.value}
+            checked={`${selected}` === `${mood.value}`}
+            onChange={e => onSelect(e.target.value)}
+          />
+          <Label htmlFor={`mood-${mood.value}`}>
+            <MoodTitle>{mood.label}</MoodTitle>
+            <MoodDescription>{mood.value}ml</MoodDescription>
+          </Label>
+        </>
+      ))}
+    </MoodSelectionWrapper>
+  </>
 )
 
 const PourScaleWrapper = styled.div`
@@ -174,17 +174,22 @@ const ScaleSection = ({portion}) => {
 }
 const IndexPage = () => {
   const [mood, setMood] = React.useState(null)
-  const moodMapper = {
-    150: 150,
-    300: 300,
-  }
+  const possibleMoods = [
+    {label: 'just a cup', value: 150},
+    {label: 'a bit chill', value: 225},
+    {label: 'let’s rock it', value: 300},
+  ]
 
   return (
     <Layout>
       <SEO title="Home" />
       <LogoSection />
-      <MoodSelectionSection selected={mood} onSelect={setMood} />
-      <ScaleSection portion={moodMapper[mood]} />
+      <MoodSelectionSection
+        selected={mood}
+        onSelect={setMood}
+        possibleMoods={possibleMoods}
+      />
+      <ScaleSection portion={mood} />
     </Layout>
   )
 }
