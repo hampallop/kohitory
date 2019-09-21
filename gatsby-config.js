@@ -5,6 +5,7 @@ module.exports = {
     author: '@hamcompe',
   },
   plugins: [
+    'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-react-svg',
