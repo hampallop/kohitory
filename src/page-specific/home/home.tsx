@@ -5,6 +5,7 @@ import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import MoodSelectionSection from './mood-selection-section'
 import ScaleSection from './scale-section'
+import SummarizeSection from './summarize-section'
 
 const IndexPage = () => {
   const [mood, setMood] = React.useState(null)
@@ -15,15 +16,18 @@ const IndexPage = () => {
   ]
 
   return (
-    <Layout>
-      <SEO title="Home" />
-      <MoodSelectionSection
-        selected={mood}
-        onSelect={setMood}
-        possibleMoods={possibleMoods}
-      />
-      <ScaleSection portion={mood} />
-    </Layout>
+    <>
+      <Layout>
+        <SEO title="Home" />
+        <MoodSelectionSection
+          selected={mood}
+          onSelect={setMood}
+          possibleMoods={possibleMoods}
+        />
+        <ScaleSection portion={mood} />
+      </Layout>
+      {mood && <SummarizeSection beanAmount={mood / 15} />}
+    </>
   )
 }
 

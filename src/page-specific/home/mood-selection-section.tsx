@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled from '@emotion/styled'
 
 const Label = styled.label`
@@ -31,7 +31,8 @@ const MoodSelectionWrapper = styled.section`
   align-items: stretch;
   align-content: center;
   max-width: 40rem;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 
   input[type='radio'] {
     display: none;
@@ -41,18 +42,23 @@ const MoodSelectionWrapper = styled.section`
     color: #f1f1f1;
   }
 
-  margin-top: 3rem;
   margin-bottom: 4.5rem;
+`
+
+const Title = styled.h2`
+  text-align: center;
+  margin-top: 3.5rem;
+  margin-bottom: 3rem;
+  font-weight: 800;
+  font-size: 2.25rem;
 `
 
 export default ({possibleMoods, selected, onSelect}) => (
   <>
-    <h2 style={{textAlign: 'center', marginTop: 60}}>
-      What’s your mood today?
-    </h2>
+    <Title>What’s your mood today?</Title>
     <MoodSelectionWrapper>
       {possibleMoods.map(mood => (
-        <>
+        <Fragment key={`mood-${mood.value}`}>
           <input
             type="radio"
             id={`mood-${mood.value}`}
@@ -65,7 +71,7 @@ export default ({possibleMoods, selected, onSelect}) => (
             <MoodTitle>{mood.label}</MoodTitle>
             <MoodDescription>{mood.value}ml</MoodDescription>
           </Label>
-        </>
+        </Fragment>
       ))}
     </MoodSelectionWrapper>
   </>
