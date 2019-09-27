@@ -29,33 +29,35 @@ const BrandingWrapper = styled.div`
   width: 100%;
 `
 
-const GitHubLink = () => {
+const GitHubLink = ({imgFixedSrc}) => (
+  <GitHubLinkWrapper
+    href="https://github.com/hamcompe/kohitory"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Img fixed={imgFixedSrc} />
+  </GitHubLinkWrapper>
+)
+
+const Branding = ({imgFixedSrc}) => (
+  <BrandingWrapper>
+    <Link to="/">
+      <Img fixed={imgFixedSrc} />
+    </Link>
+  </BrandingWrapper>
+)
+
+const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: {eq: "github-mark.png"}) {
+      githubMark: file(relativePath: {eq: "github-mark.png"}) {
         childImageSharp {
           fixed(width: 36, height: 36) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-    }
-  `)
-  return (
-    <GitHubLinkWrapper
-      href="https://github.com/hamcompe/kohitory"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Img fixed={data.file.childImageSharp.fixed} />
-    </GitHubLinkWrapper>
-  )
-}
-
-const Branding = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: {eq: "kohitory-brand.png"}) {
+      brand: file(relativePath: {eq: "kohitory-brand.png"}) {
         childImageSharp {
           fixed(width: 270) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
@@ -64,21 +66,14 @@ const Branding = () => {
       }
     }
   `)
+
   return (
-    <BrandingWrapper>
-      <Link to="/">
-        <Img fixed={data.file.childImageSharp.fixed} />
-      </Link>
-    </BrandingWrapper>
+    <HeaderContainer>
+      <GitHubLink imgFixedSrc={data.githubMark.childImageSharp.fixed} />
+      <Branding imgFixedSrc={data.brand.childImageSharp.fixed} />
+    </HeaderContainer>
   )
 }
-
-const Header = () => (
-  <HeaderContainer>
-    <GitHubLink />
-    <Branding />
-  </HeaderContainer>
-)
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
