@@ -16,16 +16,17 @@ const Link = styled(GatsbyLink)`
   color: #111;
   text-decoration: none;
 `
-const HeaderTitle = styled.h1`
-  width: 100%;
-  text-align: center;
-  margin-left: -36px;
-`
 const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   margin-bottom: 1.45rem;
+`
+const BrandingWrapper = styled.div`
+  margin-left: -36px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `
 
 const GitHubLink = () => {
@@ -33,8 +34,6 @@ const GitHubLink = () => {
     query {
       file(relativePath: {eq: "github-mark.png"}) {
         childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
           fixed(width: 36, height: 36) {
             ...GatsbyImageSharpFixed
           }
@@ -53,12 +52,31 @@ const GitHubLink = () => {
   )
 }
 
-const Header = ({siteTitle}) => (
+const Branding = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: {eq: "kohitory-brand.png"}) {
+        childImageSharp {
+          fixed(width: 270) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <BrandingWrapper>
+      <Link to="/">
+        <Img fixed={data.file.childImageSharp.fixed} />
+      </Link>
+    </BrandingWrapper>
+  )
+}
+
+const Header = () => (
   <HeaderContainer>
     <GitHubLink />
-    <HeaderTitle>
-      <Link to="/">{siteTitle}</Link>
-    </HeaderTitle>
+    <Branding />
   </HeaderContainer>
 )
 
