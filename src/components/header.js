@@ -35,14 +35,14 @@ const GitHubLink = ({imgFixedSrc}) => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    <Img fixed={imgFixedSrc} />
+    <Img fixed={imgFixedSrc} style={{display: 'block'}} />
   </GitHubLinkWrapper>
 )
 
 const Branding = ({imgFixedSrc}) => (
   <BrandingWrapper>
     <Link to="/">
-      <Img fixed={imgFixedSrc} />
+      <Img fixed={imgFixedSrc} style={{display: 'block'}} />
     </Link>
   </BrandingWrapper>
 )
