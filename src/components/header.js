@@ -52,14 +52,14 @@ const Header = () => {
     query {
       githubMark: file(relativePath: {eq: "github-mark.png"}) {
         childImageSharp {
-          fixed(width: 36, height: 36) {
+          fixed(width: 32, height: 32) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       brand: file(relativePath: {eq: "kohitory-brand.png"}) {
         childImageSharp {
-          fixed(width: 270) {
+          fixed(width: 160) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }

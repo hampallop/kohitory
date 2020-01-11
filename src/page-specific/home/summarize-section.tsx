@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const summarizeSectionHeight = '8rem'
+const summarizeSectionHeight = '6rem'
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,13 +22,13 @@ const SummarizeItemWrapper = styled.div`
   line-height: 1;
 `
 const SummarizeItemTitle = styled.span`
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #999;
   display: block;
 `
 const SummarizeItemAmount = styled.span`
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
 `
 const SummarizeItemUnit = styled.span`

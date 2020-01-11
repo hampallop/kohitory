@@ -19,7 +19,7 @@ const Label = styled.label`
 `
 
 const MoodTitle = styled.span`
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 800;
 `
 const MoodDescription = styled.span``
@@ -48,9 +48,10 @@ const MoodSelectionWrapper = styled.section`
 const Title = styled.h2`
   text-align: center;
   margin-top: 3.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   font-weight: 800;
-  font-size: 2.25rem;
+  font-size: 2rem;
+  line-height: 1.3;
 `
 
 export default ({possibleMoods, selected, onSelect}) => (
