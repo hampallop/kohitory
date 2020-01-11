@@ -1,6 +1,10 @@
 import React, {Fragment} from 'react'
 import styled from '@emotion/styled'
 
+const SectionWrapper = styled.section`
+  /* max-width: 40rem; */
+  /* margin: 0 auto; */
+`
 const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -21,6 +25,9 @@ const Label = styled.label`
 const MoodTitle = styled.span`
   font-size: 1.25rem;
   font-weight: 800;
+  line-height: 1;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 `
 const MoodDescription = styled.span``
 const MoodSelectionWrapper = styled.section`
@@ -30,7 +37,6 @@ const MoodSelectionWrapper = styled.section`
   justify-items: center;
   align-items: stretch;
   align-content: center;
-  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
 
@@ -46,17 +52,21 @@ const MoodSelectionWrapper = styled.section`
 `
 
 const Title = styled.h2`
-  text-align: center;
   margin-top: 3.5rem;
-  margin-bottom: 2.5rem;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.3;
+`
+const TitleDescription = styled.p`
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  color: #666;
 `
 
 export default ({possibleMoods, selected, onSelect}) => (
-  <>
+  <SectionWrapper>
     <Title>What’s your mood today?</Title>
+    <TitleDescription>Select coffee beans amount:</TitleDescription>
     <MoodSelectionWrapper>
       {possibleMoods.map(mood => (
         <Fragment key={`mood-${mood.value}`}>
@@ -70,10 +80,10 @@ export default ({possibleMoods, selected, onSelect}) => (
           />
           <Label htmlFor={`mood-${mood.value}`}>
             <MoodTitle>{mood.label}</MoodTitle>
-            <MoodDescription>{mood.value}ml</MoodDescription>
+            <MoodDescription>{mood.value}g</MoodDescription>
           </Label>
         </Fragment>
       ))}
     </MoodSelectionWrapper>
-  </>
+  </SectionWrapper>
 )

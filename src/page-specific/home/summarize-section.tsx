@@ -50,7 +50,7 @@ export default ({beanAmount}) => (
   <>
     <SpareSpace />
     <Wrapper>
-      <SummarizeItem label="Coffee Bean" amount={beanAmount} unit="g" />
+      <SummarizeItem label="Overall Amount" amount={beanAmount} unit="ml" />
     </Wrapper>
   </>
 )

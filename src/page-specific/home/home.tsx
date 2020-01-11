@@ -7,26 +7,42 @@ import MoodSelectionSection from './mood-selection-section'
 import ScaleSection from './scale-section'
 import SummarizeSection from './summarize-section'
 
+enum Proportion {
+  fifteen = 15,
+  tweleve = 12,
+}
+enum CoffeeBeanSelection {
+  ten = 10,
+  fifteen = 15,
+  twenty = 20,
+}
+
+const proportions = [Proportion.fifteen, Proportion.tweleve]
+
+const possibleMoods = [
+  {label: 'just a sip', value: CoffeeBeanSelection.ten},
+  {label: 'chill', value: CoffeeBeanSelection.fifteen},
+  {label: 'rock it', value: CoffeeBeanSelection.twenty},
+]
+
 const IndexPage = () => {
-  const [mood, setMood] = React.useState(null)
-  const possibleMoods = [
-    {label: 'just a cup', value: 150},
-    {label: 'a bit chill', value: 225},
-    {label: 'let’s rock it', value: 300},
-  ]
+  const [beansAmount, setBeansAmount] = React.useState(null)
+  const [selectedProportion, setProportion] = React.useState(Proportion.fifteen)
 
   return (
     <>
       <Layout>
         <SEO title="Home" />
         <MoodSelectionSection
-          selected={mood}
-          onSelect={setMood}
+          selected={beansAmount}
+          onSelect={setBeansAmount}
           possibleMoods={possibleMoods}
         />
-        <ScaleSection portion={mood} />
+        <ScaleSection portion={beansAmount * selectedProportion} />
       </Layout>
-      {mood && <SummarizeSection beanAmount={mood / 15} />}
+      {beansAmount && (
+        <SummarizeSection beanAmount={beansAmount * selectedProportion} />
+      )}
     </>
   )
 }
